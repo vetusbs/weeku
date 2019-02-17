@@ -9,8 +9,8 @@ import kotlin.random.Random
 
 private val STARTERS = listOf(
         Dish("Macarrons bolonyesa"),
-        Dish("Patata i monjeta"),
-        Dish("Sopa de peix"),
+        Dish("Patata i mongeta tendra"),
+        Dish("Sopa de peix amb pistons"),
         Dish("Caldo de verdures"),
         Dish("Amanida verda"),
         Dish("Arròs a la cubana")
