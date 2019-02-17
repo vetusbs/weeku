@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component
 import kotlin.random.Random
 
 private val STARTERS = listOf(
-        Dish("Macarrons"),
+        Dish("Macarrons bolonyesa"),
         Dish("Patata i monjeta"),
         Dish("Sopa de peix"),
         Dish("Caldo de verdures"),
