@@ -27,7 +27,7 @@ apply plugin: "org.sonarqube"
 apply from: "$rootDir/buildsystem/dependencies.gradle"
 apply from: "$rootDir/buildsystem/detekt.gradle"
 
-group "com.albert.bres"
+group "io.weeku"
 version "1.0-SNAPSHOT"
 
 sourceCompatibility = 1.8
