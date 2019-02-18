@@ -16,7 +16,7 @@ class Launcher
 @Configuration
 class MainConfig {
     @Bean
-    fun restTempalte() = RestTemplate()
+    fun restTemplate() = RestTemplate()
 
     @Bean
     fun concurrencyFilter() = ConcurrencyLimitServletFilter(

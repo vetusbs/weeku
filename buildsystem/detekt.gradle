@@ -6,7 +6,7 @@ task detekt(type: JavaExec) {
     main = "io.gitlab.arturbosch.detekt.cli.Main"
     classpath = configurations.detekt
     def input = "$projectDir/src/main/kotlin"
-    def config = "$rootDir/detekt-config.yml"
+    def config = "$rootDir/buildsystem/detekt-config.yml"
     def filters = ".*test.*,.*/resources/.*,.*/tmp/.*"
     def params = [ '-i', input, '-c', config, '-f', filters]
     println("PARAMS = $params") //to make sure the path is right
@@ -16,5 +16,5 @@ task detekt(type: JavaExec) {
 check.dependsOn detekt
 
 dependencies {
-    detekt 'io.gitlab.arturbosch.detekt:detekt-cli:1.0.0-RC13'
+    detekt 'io.gitlab.arturbosch.detekt:detekt-cli:1.0.0-RC14'
 }
