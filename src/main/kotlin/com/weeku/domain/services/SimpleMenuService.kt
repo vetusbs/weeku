@@ -12,7 +12,7 @@ private val STARTERS = listOf(
         Dish("Patata i mongeta tendra"),
         Dish("Sopa de peix amb pistons"),
         Dish("Caldo de verdures"),
-        Dish("Amanida verda"),
+        Dish("Amanida verda amb burrata"),
         Dish("Arròs a la cubana")
 )
 
