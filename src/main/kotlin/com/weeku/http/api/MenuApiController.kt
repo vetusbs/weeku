@@ -6,7 +6,9 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-class MenuApiController(private val simpleMenuService: SimpleMenuService) {
+class MenuApiController(
+        private val simpleMenuService: SimpleMenuService
+) {
 
     @GetMapping("/api/menu")
     fun getMenu(model: Model) =

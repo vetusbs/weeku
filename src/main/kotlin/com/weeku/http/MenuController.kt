@@ -6,7 +6,9 @@ import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping
 
 @Controller
-class MenuController(private val simpleMenuService: SimpleMenuService) {
+class MenuController(
+        private val simpleMenuService: SimpleMenuService
+) {
 
     @GetMapping("/menu")
     fun getMenu(model: Model): String {

@@ -39,34 +39,34 @@ class SimpleMenuService : MenuService {
 
     private val random = Random(1)
 
-    override fun generateWeeklyMenu(): WeeklyMenu {
-        return WeeklyMenu(
-                listOf(
-                        generateDailyMenu(),
-                        generateDailyMenu(),
-                        generateDailyMenu(),
-                        generateDailyMenu(),
-                        generateDailyMenu(),
-                        generateDailyMenu(),
-                        generateDailyMenu()
-                )
-        )
-    }
-
-    private fun generateDailyMenu() = DailyMenu(
-            listOf(
-                    generateMeal(),
-                    generateMeal()
+    override fun generateWeeklyMenu() =
+            WeeklyMenu(
+                    listOf(
+                            generateDailyMenu(),
+                            generateDailyMenu(),
+                            generateDailyMenu(),
+                            generateDailyMenu(),
+                            generateDailyMenu(),
+                            generateDailyMenu(),
+                            generateDailyMenu()
+                    )
             )
-    )
 
-    private fun generateMeal() = Meal(
-            getRandomDish(STARTERS),
-            getRandomDish(MAIN_DISHES),
-            getRandomDish(DESERTS)
-    )
+    private fun generateDailyMenu() =
+            DailyMenu(
+                    listOf(
+                            generateMeal(),
+                            generateMeal()
+                    )
+            )
 
-    private fun getRandomDish(dishes: List<Dish>): Dish {
-        return dishes.get(random.nextInt(0, dishes.size))
-    }
+    private fun generateMeal() =
+            Meal(
+                    getRandomDish(STARTERS),
+                    getRandomDish(MAIN_DISHES),
+                    getRandomDish(DESERTS)
+            )
+
+    private fun getRandomDish(dishes: List<Dish>) =
+            dishes[random.nextInt(0, dishes.size)]
 }
