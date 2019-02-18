@@ -1,0 +1,21 @@
+ext {
+    klint_version = "0.30.0"
+    jackson_kotlin_version = "2.9.8"
+    jupiter_version = "5.4.0"
+    concurrency_version = "0.1.12"
+    mockito_kotlin_version = "2.1.0"
+
+    ktlint_checker = "com.github.shyiko:ktlint:$klint_version"
+    kotlin_stdlib = "org.jetbrains.kotlin:kotlin-stdlib:${project.kotlin_version}" // Required for Kotlin integration
+    spring_starter_web = "org.springframework.boot:spring-boot-starter-web"
+    spring_stater_thymeleaf = "org.springframework.boot:spring-boot-starter-thymeleaf"
+    spring_devtools = "org.springframework.boot:spring-boot-devtools"
+    jackson_kotlin = "com.fasterxml.jackson.module:jackson-module-kotlin:$jackson_kotlin_version"
+    concurrency_core = "com.netflix.concurrency-limits:concurrency-limits-core:$concurrency_version"
+    concurrency_servlet = "com.netflix.concurrency-limits:concurrency-limits-servlet:$concurrency_version"
+
+    spring_starter_test = "org.springframework.boot:spring-boot-starter-test"
+    jupiter = "org.junit.jupiter:junit-jupiter:$jupiter_version"
+    jupiter_api = "org.junit.jupiter:junit-jupiter-api:$jupiter_version"
+    mockito_kotlin = "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockito_kotlin_version"
+}
