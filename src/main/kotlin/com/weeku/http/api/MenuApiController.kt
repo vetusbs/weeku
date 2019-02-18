@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 class MenuApiController(
-        private val simpleMenuService: SimpleMenuService
+    private val simpleMenuService: SimpleMenuService
 ) {
 
     @GetMapping("/api/menu")

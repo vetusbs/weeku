@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping
 
 @Controller
 class MenuController(
-        private val simpleMenuService: SimpleMenuService
+    private val simpleMenuService: SimpleMenuService
 ) {
 
     @GetMapping("/menu")
