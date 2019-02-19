@@ -62,11 +62,13 @@ class SimpleMenuService : MenuService {
 
     private fun generateMeal() =
         Meal(
-            getRandomDish(STARTERS),
-            getRandomDish(MAIN_DISHES),
-            getRandomDish(DESERTS)
+            listOf(
+                getRandomDish(STARTERS),
+                getRandomDish(MAIN_DISHES),
+                getRandomDish(DESERTS)
+            )
         )
 
     private fun getRandomDish(dishes: List<Dish>) =
-            dishes[random.nextInt(0, dishes.size)]
+        dishes[random.nextInt(0, dishes.size)]
 }
