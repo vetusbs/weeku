@@ -1,4 +1,4 @@
-package com.weeku
+package io.weeku
 
 import com.netflix.concurrency.limits.internal.EmptyMetricRegistry
 import com.netflix.concurrency.limits.limit.VegasLimit

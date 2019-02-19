@@ -1,6 +1,5 @@
-package com.weeku.domain.services
+package io.weeku.domain.services
 
-import io.weeku.domain.services.MenuService
 import io.weeku.domain.services.objects.DailyMenu
 import io.weeku.domain.services.objects.Dish
 import io.weeku.domain.services.objects.Meal
@@ -63,13 +62,11 @@ class SimpleMenuService : MenuService {
 
     private fun generateMeal() =
         Meal(
-            listOf(
-                getRandomDish(STARTERS),
-                getRandomDish(MAIN_DISHES),
-                getRandomDish(DESERTS)
-            )
+            getRandomDish(STARTERS),
+            getRandomDish(MAIN_DISHES),
+            getRandomDish(DESERTS)
         )
 
     private fun getRandomDish(dishes: List<Dish>) =
-        dishes[random.nextInt(0, dishes.size)]
+            dishes[random.nextInt(0, dishes.size)]
 }

@@ -1,6 +1,6 @@
-package com.weeku.domain.services
+package io.weeku.domain.services
 
-import com.weeku.domain.services.objects.WeeklyMenu
+import io.weeku.domain.services.objects.WeeklyMenu
 import org.springframework.stereotype.Component
 
 @Component
