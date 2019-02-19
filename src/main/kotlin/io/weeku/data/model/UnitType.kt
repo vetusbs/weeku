@@ -1,4 +1,4 @@
-package io.weeku.domain.services.objects
+package io.weeku.data.model
 
 enum class UnitType(val metric: Boolean) {
     UNIT(false),

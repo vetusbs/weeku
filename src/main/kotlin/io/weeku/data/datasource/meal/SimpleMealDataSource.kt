@@ -1,8 +1,29 @@
-package io.weeku.domain.services
+package io.weeku.data.datasource.meal
 
-import io.weeku.domain.services.objects.*
+import io.weeku.data.model.Dish
+import io.weeku.data.model.Ingredient
+import io.weeku.data.model.Meal
+import io.weeku.data.model.UnitType
 import org.springframework.stereotype.Component
 import kotlin.random.Random
+
+@Component
+class SimpleMealDataSource : MealDataSource {
+
+    private val random = Random(1)
+
+    override val meal: Meal
+        get() = Meal(
+            listOf(
+                getRandomDish(STARTERS),
+                getRandomDish(MAIN_DISHES),
+                getRandomDish(DESERTS)
+            )
+        )
+
+    private fun getRandomDish(dishes: List<Dish>) =
+        dishes[random.nextInt(0, dishes.size)]
+}
 
 private val STARTERS = listOf(
     Dish(name = "Macarrons bolonyesa",
@@ -43,42 +64,3 @@ private val DESERTS = listOf(
     Dish(name = "Taronja", ingredients = listOf(Ingredient(name = "Taronja", amount = 1.0, unitType = UnitType.UNIT))),
     Dish(name = "Crema", ingredients = listOf(Ingredient(name = "Crema", amount = 1.0, unitType = UnitType.UNIT)))
 )
-
-@Component
-class SimpleMenuService : MenuService {
-
-    private val random = Random(1)
-
-    override fun generateWeeklyMenu() =
-        WeeklyMenu(
-            listOf(
-                generateDailyMenu(),
-                generateDailyMenu(),
-                generateDailyMenu(),
-                generateDailyMenu(),
-                generateDailyMenu(),
-                generateDailyMenu(),
-                generateDailyMenu()
-            )
-        )
-
-    private fun generateDailyMenu() =
-        DailyMenu(
-            listOf(
-                generateMeal(),
-                generateMeal()
-            )
-        )
-
-    private fun generateMeal() =
-        Meal(
-            listOf(
-                getRandomDish(STARTERS),
-                getRandomDish(MAIN_DISHES),
-                getRandomDish(DESERTS)
-            )
-        )
-
-    private fun getRandomDish(dishes: List<Dish>) =
-        dishes[random.nextInt(0, dishes.size)]
-}
