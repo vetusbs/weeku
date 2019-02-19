@@ -1,6 +1,6 @@
-package com.weeku.http.api
+package io.weeku.http.api
 
-import com.weeku.domain.services.SimpleMenuService
+import io.weeku.domain.services.SimpleMenuService
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RestController
