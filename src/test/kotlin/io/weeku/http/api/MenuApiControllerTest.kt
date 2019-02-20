@@ -1,8 +1,11 @@
 package io.weeku.http.api
 
+import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.whenever
-import io.weeku.domain.services.MenuService
-import io.weeku.domain.services.objects.WeeklyMenu
+import io.weeku.domain.model.ShoppingList
+import io.weeku.domain.model.WeeklyMenu
+import io.weeku.domain.model.WeeklyPlan
+import io.weeku.domain.service.MenuService
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
@@ -20,7 +23,7 @@ internal class MenuApiControllerTest {
     private lateinit var context: WebApplicationContext
 
     @MockBean
-    lateinit var menuService: MenuService
+    lateinit var mockMenuService: MenuService
 
     lateinit var mockMvc: MockMvc
 
@@ -30,10 +33,17 @@ internal class MenuApiControllerTest {
     }
 
     @Test
-    fun `should return 200 when get menu`() {
-        whenever(menuService.generateWeeklyMenu()).thenReturn(WeeklyMenu(emptyList()))
+    fun `should return 200 when get a weekly plan`() {
+        whenever(mockMenuService.generateWeeklyMenu()).thenReturn(
+            WeeklyPlan(
+                WeeklyMenu(emptyList()),
+                ShoppingList(emptyList())
+            )
+        )
 
         this.mockMvc.perform(get("/api/menu"))
             .andExpect(status().isOk)
+
+        verify(mockMenuService).generateWeeklyMenu()
     }
 }

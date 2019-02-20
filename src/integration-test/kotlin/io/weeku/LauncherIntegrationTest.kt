@@ -1,7 +1,7 @@
+package io.weeku
 
 import io.restassured.RestAssured
 import io.restassured.RestAssured.given
-import io.weeku.IntegrationTest
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.springframework.boot.web.server.LocalServerPort
@@ -13,12 +13,12 @@ class LauncherIntegrationTest {
     val serverPort: Int = 0
 
     @BeforeEach
-    fun setupMockServerAndAwsCredentials() {
+    fun setUp() {
         RestAssured.baseURI = "http://localhost:$serverPort"
     }
 
     @Test
-    fun contextLoadsAndHealthReturnsUp() {
+    fun `context is loaded and health endpoint is up`() {
         given().`when`()
             .get("actuator/health")
             .then()

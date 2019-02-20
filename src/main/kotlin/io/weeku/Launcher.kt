@@ -20,10 +20,10 @@ class MainConfig {
 
     @Bean
     fun concurrencyFilter() = ConcurrencyLimitServletFilter(
-            ServletLimiterBuilder()
-                    .limit(VegasLimit.newBuilder().build())
-                    .metricRegistry(EmptyMetricRegistry.INSTANCE)
-                    .build()
+        ServletLimiterBuilder()
+            .limit(VegasLimit.newBuilder().build())
+            .metricRegistry(EmptyMetricRegistry.INSTANCE)
+            .build()
     )
 }
 
