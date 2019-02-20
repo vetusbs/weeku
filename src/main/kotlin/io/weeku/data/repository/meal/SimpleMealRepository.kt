@@ -1,7 +1,7 @@
 package io.weeku.data.repository.meal
 
 import io.weeku.data.datasource.meal.MealDataSource
-import io.weeku.data.model.Meal
+import io.weeku.domain.model.Meal
 import org.springframework.stereotype.Component
 
 @Component

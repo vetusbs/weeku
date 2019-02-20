@@ -1,9 +1,9 @@
 package io.weeku.data.datasource.meal
 
-import io.weeku.data.model.Dish
-import io.weeku.data.model.Ingredient
-import io.weeku.data.model.Meal
-import io.weeku.data.model.UnitType
+import io.weeku.domain.model.Dish
+import io.weeku.domain.model.Ingredient
+import io.weeku.domain.model.Meal
+import io.weeku.domain.model.UnitType
 import org.springframework.stereotype.Component
 import kotlin.random.Random
 
