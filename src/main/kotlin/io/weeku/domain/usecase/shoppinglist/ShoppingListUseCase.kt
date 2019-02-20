@@ -5,6 +5,9 @@ import io.weeku.domain.model.ShoppingList
 import org.springframework.stereotype.Component
 
 @Component
-interface ShoppingListUseCase {
-    fun extractShoppingList(weeklyMenu: WeeklyMenu): ShoppingList
+class ShoppingListUseCase {
+
+    fun extractShoppingList(weeklyMenu: WeeklyMenu): ShoppingList {
+        return ShoppingList(emptyList()) //TODO @antonio-manuel process weeklymenu
+    }
 }

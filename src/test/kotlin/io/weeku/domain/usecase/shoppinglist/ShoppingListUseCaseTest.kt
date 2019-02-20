@@ -5,12 +5,12 @@ import io.weeku.test.UnitTest
 import org.junit.Assert.assertEquals
 import org.junit.jupiter.api.Test
 
-internal class ShoppingListUseCaseImplTest : UnitTest() {
+internal class ShoppingListUseCaseTest : UnitTest() {
 
-    private lateinit var sut: ShoppingListUseCaseImpl
+    private lateinit var sut: ShoppingListUseCase
 
     override fun onPrepareBeforeEachTest() {
-        sut = ShoppingListUseCaseImpl()
+        sut = ShoppingListUseCase()
     }
 
     @Test
