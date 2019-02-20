@@ -6,7 +6,7 @@ import io.weeku.data.repository.meal.MealRepository
 import org.springframework.stereotype.Component
 
 @Component
-class WeeklyMenuUseCase(
+class CreateWeeklyMenuUseCase(
     private val mealRepository: MealRepository
 ) {
 
