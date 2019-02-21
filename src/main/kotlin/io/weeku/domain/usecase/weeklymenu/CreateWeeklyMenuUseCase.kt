@@ -2,7 +2,7 @@ package io.weeku.domain.usecase.weeklymenu
 
 import io.weeku.domain.model.DailyMenu
 import io.weeku.domain.model.WeeklyMenu
-import io.weeku.data.repository.meal.MealRepository
+import io.weeku.domain.service.MealRepository
 import org.springframework.stereotype.Component
 
 @Component

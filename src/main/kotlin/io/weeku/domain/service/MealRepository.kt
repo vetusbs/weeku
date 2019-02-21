@@ -1,4 +1,4 @@
-package io.weeku.data.repository.meal
+package io.weeku.domain.service
 
 import io.weeku.domain.model.Meal
 import org.springframework.stereotype.Component

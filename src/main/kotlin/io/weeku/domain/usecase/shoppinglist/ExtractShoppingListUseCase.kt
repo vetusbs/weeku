@@ -8,6 +8,6 @@ import org.springframework.stereotype.Component
 class ExtractShoppingListUseCase {
 
     fun extractShoppingList(weeklyMenu: WeeklyMenu): ShoppingList {
-        return ShoppingList(emptyList()) //TODO @antonio-manuel process weeklymenu
+        return ShoppingList(emptyList()) // TODO @antonio-manuel process weeklymenu
     }
 }
