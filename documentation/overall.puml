@@ -1,0 +1,61 @@
+@startuml
+
+package "Framework / Infrastructure" as FI {
+  HTTP - [Weekly Plan Controller]
+  SQS - [Email Queue Listener]
+  [Repository]
+}
+
+note top of FI
+  This is mainly the entry points of our application are defined
+  Http requests, in-mails, Streams, Queues, Events, Schedulers
+end note
+
+package "Application usecases" as UC{
+  [Generate weekly plan]
+  [Send shopping list by email]
+}
+
+
+note left of UC
+  This is what our application does. Use cases can be thin or
+  bigger depending on the logic of our app.
+  These are the customer-facing actions
+end note
+
+package "Domain services" as DS{
+  [Dish Service]
+  [Shopping list service]
+  package "Email" {
+    [Email Service]
+    [Smtp Client]
+  }
+}
+
+note right of DS
+  These service are responsible for the business logic.
+end note
+
+cloud "Third party services" {
+  [Dishes Api]
+  [Smtp server]
+  [Ulabox Api]
+}
+
+database "MySql" {
+  [Main Database]
+}
+
+
+[Email Queue Listener] --> [Send shopping list by email]
+[Weekly Plan Controller] --> [Generate weekly plan]
+[Generate weekly plan] --> [Dish Service]
+[Generate weekly plan] --> [Shopping list service]
+[Dish Service] --> [Repository]
+[Repository] --> [Main Database]
+[Send shopping list by email] --> [Shopping list service]
+[Send shopping list by email] --> [Email Service]
+[Email Service] --> [Smtp Client]
+[Smtp Client] --> [Smtp server]
+
+@enduml
