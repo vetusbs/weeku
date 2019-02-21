@@ -23,9 +23,10 @@ apply plugin: "org.springframework.boot"
 apply plugin: "io.spring.dependency-management"
 apply plugin: "com.github.ben-manes.versions"
 apply plugin: "org.sonarqube"
-apply plugin: "org.sonarqube"
+apply plugin: "jacoco"
 apply from: "$rootDir/buildsystem/dependencies.gradle"
 apply from: "$rootDir/buildsystem/detekt.gradle"
+apply from: "$rootDir/buildsystem/jacoco.gradle"
 
 group "io.weeku"
 version "1.0-SNAPSHOT"
@@ -42,6 +43,8 @@ compileKotlin {
 
 configurations {
     ktlint
+    integrationTestCompile.extendsFrom testCompile
+    integrationTestRuntime.extendsFrom testRuntime
 }
 
 task ktlint(type: JavaExec, group: "verification") {
@@ -59,16 +62,47 @@ dependencies {
     ktlint ktlint_checker
 
     compile kotlin_stdlib // Required for Kotlin integration
-    compile spring_starter_web
-    compile spring_stater_thymeleaf
-    compile spring_devtools
+    compile spring_boot_starter_web
+    compile spring_boot_starter_thymeleaf
+    compile spring_boot_starter_actuator
+    compile spring_boot_devtools
 
     compile jackson_kotlin
     compile concurrency_core
     compile concurrency_servlet
 
-    testCompile spring_starter_test
+    testCompile spring_boot_starter_test
     testCompile jupiter
     testCompile jupiter_api
     testCompile mockito_kotlin
+    testCompile hamcrest_library
+    integrationTestCompile json_path
+    integrationTestCompile rest_assured
 }
+
+sourceSets {
+    integrationTest {
+        java {
+            compileClasspath += main.output + test.output
+            runtimeClasspath += main.output + test.output
+            srcDir file('src/integration-test/kotlin')
+        }
+        resources.srcDir file('src/integration-test/kotlin')
+    }
+}
+
+test {
+    useJUnitPlatform()
+    jacoco {
+        destinationFile = file("${buildDir}/jacoco/test.exec")
+    }
+    finalizedBy(jacocoTestReport)
+}
+
+task integrationTest(type: Test) {
+    testClassesDirs = sourceSets.integrationTest.output.classesDirs
+    classpath = sourceSets.integrationTest.runtimeClasspath
+    outputs.upToDateWhen { false }
+}
+check.dependsOn integrationTest
+integrationTest.mustRunAfter test
