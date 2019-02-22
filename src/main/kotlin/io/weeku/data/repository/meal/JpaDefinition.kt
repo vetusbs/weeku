@@ -13,7 +13,6 @@ data class JpaDish(
     val name: String,
     val preparationTime: Int = 0,
     @OneToMany(mappedBy = "dishId", fetch = FetchType.LAZY)
-    @Fetch(value= FetchMode.SELECT)
     val ingredients: Set<JpaIngredients> = emptySet()
 ) {
     private constructor() : this(0, "")
@@ -30,4 +29,6 @@ data class JpaIngredients(
     val name: String,
     val amount: BigDecimal,
     val unit_type: String
-)
+) {
+    private constructor() : this(0, 0, "", BigDecimal.ZERO, "")
+}

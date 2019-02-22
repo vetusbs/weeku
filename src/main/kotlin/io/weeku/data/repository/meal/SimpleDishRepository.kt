@@ -5,6 +5,7 @@ import io.weeku.domain.model.Dish
 import io.weeku.domain.model.Ingredient
 import io.weeku.domain.model.UnitType
 import io.weeku.domain.service.DishRepository
+import org.apache.logging.log4j.LogManager
 import org.springframework.stereotype.Component
 
 @Component
@@ -12,15 +13,23 @@ class SimpleDishRepository(
     private val dishDatasource: DishDatasource
 ) : DishRepository {
 
+    val logger = LogManager.getLogger(SimpleDishRepository::class.java)
+
+    init {
+        logger.info("repository started with [{}]", dishDatasource)
+    }
+
     override fun fetchRandomDish():
-        Dish = dishDatasource.findAll().random().let {
-        val toMutableList = it.ingredients.toMutableList()
-        return Dish(
-            name = it.name,
-            ingredients = toMutableList.map { ingredient ->
-                Ingredient(ingredient.name, ingredient.amount.toDouble(), UnitType.valueOf(ingredient.unit_type))
-            },
-            minutesOfPreparation = it.preparationTime
-        )
+        Dish {
+        val findById = this.dishDatasource.findRandomDish()
+        return findById.let {
+            Dish(
+                name = it.name,
+                ingredients = it.ingredients.map { ingredient ->
+                    Ingredient(ingredient.name, ingredient.amount.toDouble(), UnitType.valueOf(ingredient.unit_type))
+                },
+                minutesOfPreparation = it.preparationTime
+            )
+        }
     }
 }
