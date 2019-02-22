@@ -1,5 +1,6 @@
 package io.weeku.http.api
 
+import io.weeku.domain.model.WeeklyPlan
 import io.weeku.domain.service.MenuService
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping
@@ -11,6 +12,8 @@ class MenuApiController(
 ) {
 
     @GetMapping("/api/menu")
-    fun getMenu(model: Model) =
-        menuService.generateWeeklyMenu()
+    fun getMenu(model: Model): WeeklyPlan {
+        val generateWeeklyMenu = menuService.generateWeeklyMenu()
+        return generateWeeklyMenu
+    }
 }

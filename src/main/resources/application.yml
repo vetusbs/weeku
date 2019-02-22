@@ -1,3 +1,35 @@
+debug: false # Enable debug logs.
+trace: false # Enable trace logs.
+
+spring:
+  application:
+    name: weeku
+  jpa:
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: none
+        temp:
+          use_jdbc_metadata_defaults: false
+    hibernate:
+      database-platform: org.hibernate.dialect.PostgreSQLDialect
+      naming_strategy: org.hibernate.cfg.DefaultNamingStrategy
+  cloud.config.enabled: false
+  datasource:
+    url: jdbc:postgresql://localhost:5432/weeku
+    username: ${DB_USER:postgres}
+    password: ${DB_PASSWORD:postgres}
+  flyway:
+    locations: "classpath:db/migration"
+    validateOnMigrate: false
+    enabled: true
+
+spring.jpa.properties.javax.persistence.validation.mode: none
+
+  ## This is important
+  # Hibernate ddl auto (create, create-drop, validate, update)
+spring.jpa.hibernate.ddl-auto: validate
+
 management:
   endpoints:
     web:
