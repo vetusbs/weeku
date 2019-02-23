@@ -28,8 +28,18 @@ class CreateWeeklyMenuUseCase(
     private fun generateDailyMenu() =
         DailyMenu(
             listOf(
-                Meal(listOf(dishRepository.fetchRandomDish())),
-                Meal(listOf(dishRepository.fetchRandomDish()))
+                Meal(
+                    listOf(
+                        dishRepository.fetchRandomDish(),
+                        dishRepository.fetchRandomDish()
+                    )
+                ),
+                Meal(
+                    listOf(
+                        dishRepository.fetchRandomDish(),
+                        dishRepository.fetchRandomDish()
+                    )
+                )
             )
         )
 }

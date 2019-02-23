@@ -85,7 +85,7 @@ dependencies {
     testCompile jupiter_api
     testCompile mockito_kotlin
     testCompile hamcrest_library
-    testCompile group: 'com.meltwater.docker', name: 'kotlin-compose', version: '1.4.0'
+    testCompile kotlin_compose
     integrationTestCompile json_path
     integrationTestCompile rest_assured
 }

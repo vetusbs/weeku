@@ -11,12 +11,13 @@ class DockerComposeExtension : BeforeAllCallback, AfterAllCallback {
     @Throws(Exception::class)
     override fun beforeAll(ctx: ExtensionContext) {
         val env = HashMap<String, String>()
-        compose = DockerCompose("docker-compose.yml", "uniqe-namespace", env)
+        compose = DockerCompose("docker-compose.yml", "weeku", env)
 
         compose.up()
     }
 
     override fun afterAll(context: ExtensionContext?) {
         compose.kill()
+        compose.rm()
     }
 }

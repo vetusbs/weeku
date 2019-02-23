@@ -22,7 +22,7 @@ data class JpaDish(
     val amountOfServants: Int = 0,
     @OneToMany(mappedBy = "dishId", fetch = FetchType.EAGER)
     val ingredients: Set<JpaIngredient> = emptySet(),
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "dish_tag",
         joinColumns = [JoinColumn(name = "dish_id")],
         inverseJoinColumns = [JoinColumn(name = "tag_id")]
