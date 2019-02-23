@@ -1,11 +1,11 @@
-INSERT INTO public.dish (id, name, preparation_time, reference_text)
+INSERT INTO public.dish (id, name, minutes_of_preparation, amount_of_servants, reference_text)
     VALUES
-    (1, 'Macarrons bolonyesa', 30, 'macarroni.meat'),
-    (2, 'Patata i monjeta tendra', 15, 'boiled.potato.beans'),
-    (3, 'Sopa de peix', 60, 'soup.fish'),
-    (4, 'Caldo de verdures', 120, 'brew.vegetables'),
-    (5, 'Amanida verda amb burrata', 10, 'salad.green.cheese'),
-    (6, 'Arros a la cubana', 20, 'rice.cuban');
+    (1, 'Macarrons bolonyesa', 30, 1, 'macarroni.meat'),
+    (2, 'Patata i monjeta tendra', 15, 1, 'boiled.potato.beans'),
+    (3, 'Sopa de peix', 60, 1,  'soup.fish'),
+    (4, 'Caldo de verdures', 120, 1, 'brew.vegetables'),
+    (5, 'Amanida verda amb burrata', 10, 1, 'salad.green.cheese'),
+    (6, 'Arros a la cubana', 20, 1, 'rice.cuban');
 
 INSERT INTO public.dish_ingredient (dish_id, name, reference_text, amount, unit_type)
     VALUES

@@ -25,7 +25,7 @@ ext {
     concurrency_core = "com.netflix.concurrency-limits:concurrency-limits-core:$concurrency_version"
     concurrency_servlet = "com.netflix.concurrency-limits:concurrency-limits-servlet:$concurrency_version"
 
-    spring_boot_starter_test = "org.springframework.boot:spring-boot-starter-test${spring_boot_version}"
+    spring_boot_starter_test = "org.springframework.boot:spring-boot-starter-test:${spring_boot_version}"
     jupiter = "org.junit.jupiter:junit-jupiter:$jupiter_version"
     jupiter_api = "org.junit.jupiter:junit-jupiter-api:$jupiter_version"
     mockito_kotlin = "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockito_kotlin_version"

@@ -16,7 +16,7 @@ spring:
       naming_strategy: org.hibernate.cfg.DefaultNamingStrategy
   cloud.config.enabled: false
   datasource:
-    url: jdbc:postgresql://localhost:5432/weeku
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/weeku}
     username: ${DB_USER:postgres}
     password: ${DB_PASSWORD:postgres}
   flyway:

@@ -1,7 +1,8 @@
 CREATE TABLE public.dish (
   id SERIAL NOT NULL,
   name text NOT NULL,
-  preparation_time INTEGER,
+  minutes_of_preparation INTEGER DEFAULT 0,
+  amount_of_servants INTEGER DEFAULT 0,
   reference_text text NOT NULL,
   created timestamp with time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
   updated timestamp with time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,

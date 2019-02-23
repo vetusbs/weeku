@@ -1,10 +1,9 @@
-package io.weeku.data.datasource.meal
+package io.weeku.data.repository.dish
 
-import io.weeku.data.repository.meal.JpaDish
+import io.weeku.data.repository.JpaDish
 import org.springframework.data.jpa.repository.Query
 import org.springframework.data.repository.CrudRepository
 import org.springframework.stereotype.Component
-
 
 @Component
 interface DishDatasource : CrudRepository<JpaDish, Int> {
