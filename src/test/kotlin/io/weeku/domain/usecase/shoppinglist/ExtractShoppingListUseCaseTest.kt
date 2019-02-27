@@ -2,7 +2,7 @@ package io.weeku.domain.usecase.shoppinglist
 
 import io.weeku.domain.model.WeeklyMenu
 import io.weeku.test.UnitTest
-import org.junit.Assert.assertEquals
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
 internal class ExtractShoppingListUseCaseTest : UnitTest() {

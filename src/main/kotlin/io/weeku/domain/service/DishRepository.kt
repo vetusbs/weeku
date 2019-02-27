@@ -1,9 +1,9 @@
 package io.weeku.domain.service
 
-import io.weeku.domain.model.Meal
+import io.weeku.domain.model.Dish
 import org.springframework.stereotype.Component
 
 @Component
-interface MealRepository {
-    val meal: Meal
+interface DishRepository {
+    fun fetchRandomDish(): Dish
 }

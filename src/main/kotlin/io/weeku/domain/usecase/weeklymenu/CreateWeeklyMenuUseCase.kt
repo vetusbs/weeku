@@ -1,13 +1,14 @@
 package io.weeku.domain.usecase.weeklymenu
 
 import io.weeku.domain.model.DailyMenu
+import io.weeku.domain.model.Meal
 import io.weeku.domain.model.WeeklyMenu
-import io.weeku.domain.service.MealRepository
+import io.weeku.domain.service.DishRepository
 import org.springframework.stereotype.Component
 
 @Component
 class CreateWeeklyMenuUseCase(
-    private val mealRepository: MealRepository
+    private val dishRepository: DishRepository
 ) {
 
     fun generateWeeklyMenu(): WeeklyMenu {
@@ -27,8 +28,18 @@ class CreateWeeklyMenuUseCase(
     private fun generateDailyMenu() =
         DailyMenu(
             listOf(
-                mealRepository.meal,
-                mealRepository.meal
+                Meal(
+                    listOf(
+                        dishRepository.fetchRandomDish(),
+                        dishRepository.fetchRandomDish()
+                    )
+                ),
+                Meal(
+                    listOf(
+                        dishRepository.fetchRandomDish(),
+                        dishRepository.fetchRandomDish()
+                    )
+                )
             )
         )
 }
