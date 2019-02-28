@@ -1,3 +1,3 @@
 package io.weeku.domain.model
 
-data class DailyMenu(val dishes: List<Meal>)
+data class DailyMenu(val meals: List<Meal>)

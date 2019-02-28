@@ -7,7 +7,8 @@ import io.weeku.domain.service.ShoppingListService
 @UseCaseComponent
 class GenerateWeeklyPlan(
     val menuService: MenuService,
-    val shoppingService: ShoppingListService) : UseCase<GenerateWeeklyPlanInput, GenerateWeeklyPlanOutput> {
+    val shoppingService: ShoppingListService
+) : UseCase<GenerateWeeklyPlanInput, GenerateWeeklyPlanOutput> {
     override fun execute(input: GenerateWeeklyPlanInput): GenerateWeeklyPlanOutput {
         val weeklyMenu = menuService.generateWeeklyMenu(input.numberOfDays)
         val shoppingList = shoppingService.extractShoppingList(weeklyMenu)

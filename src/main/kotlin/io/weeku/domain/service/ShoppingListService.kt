@@ -12,7 +12,7 @@ class ShoppingListService {
     fun extractShoppingList(weeklyMenu: WeeklyMenu): ShoppingList {
         val ingredientList = mutableListOf<Ingredient>()
         weeklyMenu.dailyMenus
-            .flatMap { dailyMenu -> dailyMenu.dishes }
+            .flatMap { dailyMenu -> dailyMenu.meals }
             .flatMap { meal -> meal.dishes }
             .flatMap { dish -> dish.ingredients }
             .forEach { ingredient ->

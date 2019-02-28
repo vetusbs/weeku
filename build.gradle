@@ -99,7 +99,6 @@ sourceSets {
         }
         resources.srcDir file('src/integration-test/resources')
     }
-    
 }
 
 test {
