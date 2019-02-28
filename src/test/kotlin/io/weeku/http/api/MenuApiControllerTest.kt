@@ -7,7 +7,7 @@ import io.weeku.domain.model.ShoppingList
 import io.weeku.domain.model.WeeklyMenu
 import io.weeku.domain.model.WeeklyPlan
 import io.weeku.domain.usecase.GenerateWeeklyPlan
-import io.weeku.domain.usecase.GenerateWeeklyPlanOutput
+import io.weeku.domain.usecase.GenerateWeeklyPlanOkOutput
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
@@ -37,7 +37,7 @@ internal class MenuApiControllerTest {
     @Test
     fun `should return 200 when get a weekly plan`() {
         whenever(mockGenerateWeeklyPlan.execute(any())).thenReturn(
-            GenerateWeeklyPlanOutput(
+            GenerateWeeklyPlanOkOutput(
                 WeeklyPlan(WeeklyMenu(emptyList()), ShoppingList(emptyList()))
             )
         )

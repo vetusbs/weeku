@@ -1,11 +1,12 @@
 package io.weeku.http
 
 import io.weeku.domain.usecase.GenerateWeeklyPlan
-import io.weeku.domain.usecase.GenerateWeeklyPlanInput
+import io.weeku.domain.usecase.GenerateWeeklyPlanErrorOutput
+import io.weeku.domain.usecase.GenerateWeeklyPlanOkOutput
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.RequestParam
+import org.springframework.web.bind.annotation.ModelAttribute
 
 @Controller
 class MenuController(
@@ -13,14 +14,15 @@ class MenuController(
 ) {
 
     @GetMapping("/menu")
-    fun getMenu(@RequestParam("numberOfDays", required = false) numberOfDays: Int?, model: Model): String {
-        numberOfDays?.also {
-            model.addAttribute("weeklyPlan", generateWeeklyPlan
-                .execute(
-                    GenerateWeeklyPlanInput(it)
-                ).weeklyPlan
-            )
+    fun getMenu(@ModelAttribute createWeeklyPlan: CreateWeeklyPlanHttpRequest, model: Model): String {
+
+        val weeklyPlanOutput = generateWeeklyPlan.execute(createWeeklyPlan.toGenerateWeeklyPlanInput())
+
+        when (weeklyPlanOutput) {
+            is GenerateWeeklyPlanOkOutput -> model.addAttribute("weeklyPlan", weeklyPlanOutput.weeklyPlan)
+            is GenerateWeeklyPlanErrorOutput -> model.addAttribute("error", weeklyPlanOutput.error)
         }
+
         return "menu"
     }
 }

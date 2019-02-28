@@ -1,5 +1,5 @@
 package io.weeku.domain.usecase
 
-interface UseCase<I, O> {
+interface UseCase<in I, out O> {
     fun execute(input: I): O
 }

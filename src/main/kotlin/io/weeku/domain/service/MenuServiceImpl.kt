@@ -12,7 +12,11 @@ class MenuServiceImpl(
 
     override fun generateWeeklyMenu(numberOfDays: Int): WeeklyMenu {
         return WeeklyMenu(
-            generateSequence { generateDailyMenu() }.take(numberOfDays).toList()
+            generateSequence {
+                generateDailyMenu()
+            }
+                .take(numberOfDays)
+                .toList()
         )
     }
 
