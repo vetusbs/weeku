@@ -1,0 +1,12 @@
+jacoco {
+    // You may modify the Jacoco version here
+    toolVersion = "0.8.3"
+}
+
+jacocoTestReport {
+    // Adjust the output of the test report
+    reports {
+        xml.enabled true
+        csv.enabled false
+    }
+}
