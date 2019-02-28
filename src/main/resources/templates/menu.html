@@ -50,21 +50,21 @@
 
     <main>
         <section class="hero text-center">
+            <form action="#" th:action="@{/menu}" method="get">
+                <input name="numberOfDays" type="text" value="7"/>
+                <p><input type="submit" value="Submit"/> <input type="reset" value="Reset"/></p>
+            </form>
             <div class="container-sm">
-                <div class="hero-inner">
+                <div th:if="${weeklyPlan != null}" class="hero-inner">
                     <table>
                         <tr>
                             <td th:text="Lunch"></td>
                             <td th:text="Dinner"></td>
                         </tr>
-                        <tr th:each="dailyMenu : ${weeklyMenu.dailyMenus}">
-                            <td style="border: 1px solid black;" th:each="dish: ${dailyMenu.dishes}">
-                                <p th:text="${dish.starter.name}">
-                                <p/>
-                                <p th:text="${dish.mainDish.name}">
-                                <p/>
-                                <p th:text="${dish.deserts.name}">
-                                <p/>
+                        <tr th:each="dailyMenu : ${weeklyPlan.weeklyMenu.dailyMenus}">
+                            <td style="border: 1px solid black;" th:each="meal: ${dailyMenu.meals}">
+                                <p th:each="dish : ${meal.dishes}"
+                                   th:text="${dish.name}"></p>
                             </td>
                         </tr>
                     </table>

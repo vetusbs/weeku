@@ -1,19 +1,32 @@
 package io.weeku.domain.service
 
-import io.weeku.domain.model.WeeklyPlan
-import io.weeku.domain.usecase.shoppinglist.ExtractShoppingListUseCase
-import io.weeku.domain.usecase.weeklymenu.CreateWeeklyMenuUseCase
+import io.weeku.domain.model.DailyMenu
+import io.weeku.domain.model.TwoDishMeal
+import io.weeku.domain.model.WeeklyMenu
 import org.springframework.stereotype.Component
 
 @Component
 class MenuServiceImpl(
-    private val createWeeklyMenuUseCase: CreateWeeklyMenuUseCase,
-    private val extractShoppingListUseCase: ExtractShoppingListUseCase
+    val dishRepository: DishRepository
 ) : MenuService {
 
-    override fun generateWeeklyMenu(): WeeklyPlan {
-        val weeklyMenu = createWeeklyMenuUseCase.generateWeeklyMenu()
-        val shoppingList = extractShoppingListUseCase.extractShoppingList(weeklyMenu)
-        return WeeklyPlan(weeklyMenu, shoppingList)
+    override fun generateWeeklyMenu(numberOfDays: Int): WeeklyMenu {
+        return WeeklyMenu(
+            generateSequence { generateDailyMenu() }.take(numberOfDays).toList()
+        )
     }
+
+    private fun generateDailyMenu() =
+        DailyMenu(
+            listOf(
+                TwoDishMeal(
+                    dishRepository.fetchRandomDish(),
+                    dishRepository.fetchRandomDish()
+                ),
+                TwoDishMeal(
+                    dishRepository.fetchRandomDish(),
+                    dishRepository.fetchRandomDish()
+                )
+            )
+        )
 }
