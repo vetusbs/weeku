@@ -1,4 +1,4 @@
-package io.weeku.domain.usecase.shoppinglist
+package io.weeku.domain.service
 
 import io.weeku.domain.model.Ingredient
 import io.weeku.domain.model.ShoppingList
@@ -7,12 +7,12 @@ import io.weeku.extensions.extractElementEquals
 import org.springframework.stereotype.Component
 
 @Component
-class ExtractShoppingListUseCase {
+class ShoppingListService {
 
     fun extractShoppingList(weeklyMenu: WeeklyMenu): ShoppingList {
         val ingredientList = mutableListOf<Ingredient>()
         weeklyMenu.dailyMenus
-            .flatMap { dailyMenu -> dailyMenu.dishes }
+            .flatMap { dailyMenu -> dailyMenu.meals }
             .flatMap { meal -> meal.dishes }
             .flatMap { dish -> dish.ingredients }
             .forEach { ingredient ->
