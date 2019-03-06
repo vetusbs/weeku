@@ -6,6 +6,7 @@ import io.weeku.domain.usecase.GenerateWeeklyPlanOkOutput
 import io.weeku.http.CreateWeeklyPlanHttpRequest
 import io.weeku.http.CreateWeeklyPlanHttpResponse
 import org.springframework.http.ResponseEntity
+import org.springframework.web.bind.annotation.CrossOrigin
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.ModelAttribute
 import org.springframework.web.bind.annotation.RestController
@@ -15,6 +16,7 @@ class MenuApiController(
     private val generateWeeklyPlan: GenerateWeeklyPlan
 ) {
 
+    @CrossOrigin(origins = ["*"])
     @GetMapping("/api/menu")
     fun getMenu(@ModelAttribute createWeeklyPlan: CreateWeeklyPlanHttpRequest): ResponseEntity<*> {
         val weeklyPlanOutput = generateWeeklyPlan.execute(createWeeklyPlan.toGenerateWeeklyPlanInput())

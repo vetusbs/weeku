@@ -49,12 +49,12 @@ internal class SimpleDishRepositoryTest {
             name = "name.${random.nextInt()}",
             minutesOfPreparation = random.nextInt(),
             amountOfServants = random.nextInt(),
-            ingredients = generateTestSetOfIngredients(random),
-            tags = generateTestSetOfTags(random)
+            ingredients = generateTestSetOfIngredients(),
+            tags = generateTestSetOfTags()
         )
     }
 
-    private fun generateTestSetOfTags(random: Random): Set<JpaTag> = emptySet()
+    private fun generateTestSetOfTags(): Set<JpaTag> = emptySet()
 
-    private fun generateTestSetOfIngredients(random: Random): Set<JpaIngredient> = emptySet()
+    private fun generateTestSetOfIngredients(): Set<JpaIngredient> = emptySet()
 }
