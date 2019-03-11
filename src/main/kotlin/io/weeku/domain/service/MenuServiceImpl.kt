@@ -3,6 +3,7 @@ package io.weeku.domain.service
 import io.weeku.domain.model.DailyMenu
 import io.weeku.domain.model.TwoDishMeal
 import io.weeku.domain.model.WeeklyMenu
+import io.weeku.domain.service.csp.Constrain
 import org.springframework.stereotype.Component
 
 @Component
@@ -10,7 +11,7 @@ class MenuServiceImpl(
     val dishRepository: DishRepository
 ) : MenuService {
 
-    override fun generateWeeklyMenu(numberOfDays: Int): WeeklyMenu {
+    override fun generateWeeklyMenu(numberOfDays: Int, userContraints: List<Constrain>): WeeklyMenu {
         return WeeklyMenu(
             generateSequence {
                 generateDailyMenu()

@@ -1,10 +1,24 @@
 package io.weeku.domain.service.csp
 
+import io.weeku.domain.model.DailyMenu
+import io.weeku.domain.model.Meal
+
 interface Constrain {
-    fun type(): ConstrainType
+    fun check(menus: List<DailyMenu>, meal: Meal): Boolean
 }
 
-enum class ConstrainType(val isWeekly: Boolean, isDailyMenu: Boolean) {
-    MAX_TIMES_PER_DISH(true, true),
-    MAX_TAG_PER_MENU(false, true)
+class MaxTimesPerDishContraint(val max: Int) : Constrain {
+    override fun check(menus: List<DailyMenu>, meal: Meal): Boolean {
+        return (menus.flatMap {
+            it.meals
+        }.flatMap {
+            it.dishes
+        }.filter { it == meal.dishes.first() }.count() < max)
+            &&
+            (menus.flatMap {
+                it.meals
+            }.flatMap {
+                it.dishes
+            }.filter { it == meal.dishes.last() }.count() < max)
+    }
 }

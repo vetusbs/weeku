@@ -12,7 +12,7 @@ internal class ConstraintSatisfactionMenuServiceTest {
     val random = Random(1)
 
     val mockDishRepository = mock<DishRepository>()
-    val cspMenuService = ConstraintSatisfactionMenuService(mockDishRepository, emptyList())
+    val cspMenuService = ConstraintSatisfactionMenuService(mockDishRepository)
 
     private val listOfDish = listOf(
         generateTestDish(),
@@ -31,7 +31,7 @@ internal class ConstraintSatisfactionMenuServiceTest {
     fun `test de prova`() {
         whenever(mockDishRepository.fetchAllDishes()).thenReturn(listOfDish)
 
-        val generateWeeklyMenu = cspMenuService.generateWeeklyMenu(3)
+        val generateWeeklyMenu = cspMenuService.generateWeeklyMenu(3, emptyList())
     }
 
     private fun generateTestDish(): Dish {

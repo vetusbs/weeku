@@ -24,7 +24,7 @@ internal class GenerateWeeklyPlanTest {
     @Test
     fun `should return GenerateWeeklyPlanOkOutput with weeklyMenu and shoppingList`() {
         val generateWeeklyPlanInput = GenerateWeeklyPlanInput(anyValidInputNumber)
-        whenever(menuService.generateWeeklyMenu(anyValidInputNumber)).thenReturn(anyWeeklyMenu)
+        whenever(menuService.generateWeeklyMenu(anyValidInputNumber, emptyList())).thenReturn(anyWeeklyMenu)
         whenever(shoppingListService.extractShoppingList(anyWeeklyMenu)).thenReturn(anyShoppingList)
 
         val output = generateWeeklyPlan.execute(generateWeeklyPlanInput) as GenerateWeeklyPlanOkOutput
