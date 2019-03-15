@@ -1,5 +1,6 @@
 package io.weeku.domain.usecase
 
+import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.whenever
 import io.weeku.domain.model.ShoppingList
@@ -24,7 +25,7 @@ internal class GenerateWeeklyPlanTest {
     @Test
     fun `should return GenerateWeeklyPlanOkOutput with weeklyMenu and shoppingList`() {
         val generateWeeklyPlanInput = GenerateWeeklyPlanInput(anyValidInputNumber)
-        whenever(menuService.generateWeeklyMenu(anyValidInputNumber, emptyList())).thenReturn(anyWeeklyMenu)
+        whenever(menuService.generateWeeklyMenu(any(), any())).thenReturn(anyWeeklyMenu)
         whenever(shoppingListService.extractShoppingList(anyWeeklyMenu)).thenReturn(anyShoppingList)
 
         val output = generateWeeklyPlan.execute(generateWeeklyPlanInput) as GenerateWeeklyPlanOkOutput

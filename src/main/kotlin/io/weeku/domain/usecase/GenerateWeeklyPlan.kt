@@ -5,6 +5,8 @@ import io.weeku.domain.model.WeeklyPlan
 import io.weeku.domain.service.MenuService
 import io.weeku.domain.service.ShoppingListService
 import io.weeku.domain.service.csp.Constrain
+import io.weeku.domain.service.csp.MaxDishPerDay
+import io.weeku.domain.service.csp.MaxDishPerMeal
 import io.weeku.domain.service.csp.MaxTagPerMenu
 import io.weeku.domain.service.csp.MaxTimesPerDishContraint
 
@@ -28,10 +30,11 @@ class GenerateWeeklyPlan(
 
     private fun fetchUserConstraints(): List<Constrain> =
         listOf(
-            MaxTimesPerDishContraint(5),
-            MaxTagPerMenu(2, Tag("pasta"))
+            MaxTimesPerDishContraint(2),
+            MaxTagPerMenu(3, Tag("pasta")),
+            MaxDishPerMeal(1),
+            MaxDishPerDay(1)
         )
-
 }
 
 data class GenerateWeeklyPlanInput(val numberOfDays: Int)

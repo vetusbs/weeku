@@ -26,7 +26,10 @@ class SimpleDishRepository(
         }
 
     override fun fetchAllDishes():
-        List<Dish> = dishDatasource.findAll().map { it.toDish() }
+        List<Dish> = dishDatasource.findAll()
+        .toMutableList()
+        .map { it.toDish() }
+        .shuffled()
 
     private fun JpaDish.toDish(): Dish = Dish(
         name = this.name,
