@@ -5,7 +5,17 @@ INSERT INTO public.dish (id, name, minutes_of_preparation, amount_of_servants, r
     (3, 'Sopa de peix', 60, 1,  'soup.fish'),
     (4, 'Caldo de verdures', 120, 1, 'brew.vegetables'),
     (5, 'Amanida verda amb burrata', 10, 1, 'salad.green.cheese'),
-    (6, 'Arros a la cubana', 20, 1, 'rice.cuban');
+    (6, 'Ensaladilla russa', 10, 1, 'rusian.salad'),
+    (7, 'Sopa de pistons', 10, 1, 'soup.pasta'),
+    (8, 'Espaguetis a la carbonara', 10, 1, 'spaguetti.carbonara'),
+    (9, 'Vedella a la planxa', 10, 1, 'beef'),
+    (10, 'Pollastre a la planxa', 10, 1, 'chicken'),
+    (11, 'Llom de porc', 10, 1, 'pork'),
+    (12, 'Peix al forn', 10, 1, 'fish.grilled'),
+    (13, 'Peix a la planxa', 10, 1, 'fish'),
+    (14, 'Croquetes', 10, 1, 'crokets'),
+    (15, 'Pizza', 10, 1, 'pizza'),
+    (16, 'Arros a la cubana', 20, 1, 'rice.cuban');
 
 INSERT INTO public.dish_ingredient (dish_id, name, reference_text, amount, unit_type)
     VALUES

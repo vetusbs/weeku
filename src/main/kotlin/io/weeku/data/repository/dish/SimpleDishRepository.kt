@@ -1,5 +1,6 @@
 package io.weeku.data.repository.dish
 
+import io.weeku.data.repository.JpaDish
 import io.weeku.domain.model.Dish
 import io.weeku.domain.model.Ingredient
 import io.weeku.domain.model.Tag
@@ -21,16 +22,24 @@ class SimpleDishRepository(
 
     override fun fetchRandomDish(): Dish = dishDatasource.findRandomDish()
         .let {
-            Dish(
-                name = it.name,
-                ingredients = it.ingredients.map { ingredient ->
-                    Ingredient(ingredient.name, ingredient.amount.toDouble(), UnitType.valueOf(ingredient.unit_type))
-                },
-                tags = it.tags.map { tag ->
-                    Tag(tag.name)
-                },
-                minutesOfPreparation = it.minutesOfPreparation,
-                amountOfServants = it.amountOfServants
-            )
+            it.toDish()
         }
+
+    override fun fetchAllDishes():
+        List<Dish> = dishDatasource.findAll()
+        .toMutableList()
+        .map { it.toDish() }
+        .shuffled()
+
+    private fun JpaDish.toDish(): Dish = Dish(
+        name = this.name,
+        ingredients = this.ingredients.map { ingredient ->
+            Ingredient(ingredient.name, ingredient.amount.toDouble(), UnitType.valueOf(ingredient.unit_type))
+        },
+        tags = this.tags.map { tag ->
+            Tag(tag.name)
+        },
+        minutesOfPreparation = this.minutesOfPreparation,
+        amountOfServants = this.amountOfServants
+    )
 }

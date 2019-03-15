@@ -6,4 +6,6 @@ import org.springframework.stereotype.Component
 @Component
 interface DishRepository {
     fun fetchRandomDish(): Dish
+
+    fun fetchAllDishes(): List<Dish>
 }
