@@ -1,5 +1,13 @@
 version: '2'
 services:
+  weeku-server:
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgresql
+    environment:
+      - JDBC_DATABASE_URL=jdbc:postgresql://postgresql:5432/weeku
   postgresql:
     image: postgres
     ports:

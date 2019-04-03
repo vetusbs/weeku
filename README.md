@@ -2,7 +2,14 @@
 
 # Simple service to create simple daily menus for the week
 
-To start the app in local... you should run first:
+To start the service locally using the docker compose you have to 
 ```
-docker-compose up
+./docker_compose_up.sh
 ```
+If you want to start just the postgresql and start the service separatelly, you can do 
+```
+docker-compose up postgresql
+```
+
+
+
